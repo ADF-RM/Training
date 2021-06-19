@@ -1,0 +1,5 @@
+a - 1
+this - 4
+file - 4
+hello - 5
+sample - 6
