@@ -1,7 +1,6 @@
 from threading import Timer
 from time import sleep
 
-
 class Repeat:
     def __init__(self, i):
         self.i = i

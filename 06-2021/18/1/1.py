@@ -1,7 +1,6 @@
 import os
 import sys
 
-
 class GetFile(object):
     def __init__(self) -> None:
         self.l = []
