@@ -1,3 +1,5 @@
+import sys
+
 class Convert(object):
     def __init__(self, decimal):
         self.decimal = decimal
@@ -12,7 +14,7 @@ class Convert(object):
         return f"HexaDecimal conversion : \n{self.decimal} - "+hex(self.decimal)[2:]
 
 
-s = Convert(decimal=int(input('Enter a number : \n')))
+s = Convert(decimal=int(sys.argv[1]))
 print(s.binaryConv())
 print(s.octalConv())
 print(s.hexDecimalCon())

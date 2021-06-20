@@ -1,3 +1,6 @@
+import sys
+
+
 class Ascii:
     def __init__(self, char: str) -> None:
         self.char = char
@@ -6,5 +9,5 @@ class Ascii:
         return ord(self.char)
 
 
-s = Ascii(input('Enter a character:'))
+s = Ascii(sys.argv[1])
 print(s.find())

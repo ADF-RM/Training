@@ -1,5 +1,7 @@
+import sys
+
 class GCD(object):
-    def __init__(self, list) -> None:
+    def __init__(self, *list) -> None:
         self.list = list
 
     def find_gcd(self, x, y):
@@ -14,7 +16,8 @@ class GCD(object):
         return gcd
 
 
-l = [12, 2, 10, 14, 20]
-
-gcd = GCD(l)
+l = sys.argv[1][1:-1].split(',')
+l[:] = [int(i) for i in l]
+print(l)
+gcd = GCD(*l)
 print(gcd.gcd())

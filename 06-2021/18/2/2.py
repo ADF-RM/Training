@@ -33,7 +33,6 @@ class ReadCSV:
         except FileNotFoundError as error:
             print('Exception occured : ' + str(error))
 
-
 filename = 'address.csv'
 file = os.path.join(os.getcwd(), filename)
 
