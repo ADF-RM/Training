@@ -1,11 +1,10 @@
 ### 1. Program to read a file and store the unique words in a list sorted based on the length of word in a new file along with each word length appended to it.
 
 
-
 ![1 png](https://user-images.githubusercontent.com/86099882/122677123-93699280-d1fe-11eb-90be-a589344270e1.png)
 
 
-#### Solution:
+### Solution:
 
 i)   Create a simple [text](https://github.com/ADF-RM/Training/blob/main/06-2021/18/1/sample_text.txt) file containing repeated words and the filename is given as input in the command line.
 
