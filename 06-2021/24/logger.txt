@@ -1,7 +1,4 @@
-2021-06-27 19:59:43 WARNING - Age format is correct
-2021-06-27 19:59:43 WARNING - age and gender are perfect
-2021-06-27 19:59:43 WARNING - No last transactions for last 5 days
-2021-06-27 19:59:43 WARNING - Proud of INDIAN
-2021-06-27 19:59:43 WARNING - poud of TAMIL_NADU
-2021-06-27 19:59:43 WARNING - Salary validated
-2021-06-27 19:59:43 WARNING - Success validating
+2021-06-28 12:49:30 WARNING - Age format is correct
+2021-06-28 12:49:30 WARNING - age and gender are perfect
+2021-06-28 12:49:30 ERROR - 
+2021-06-28 12:49:30 WARNING - There should not be any last 5 day transactions from the same user

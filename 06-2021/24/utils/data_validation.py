@@ -22,9 +22,9 @@ class Validate:
     
     def check_age_with_gender(self, dob, gender):
         age = self.age_calculate(dob)
-        if gender is 'M' and age >= 20:
+        if gender == 'M' and age >= 20:
             return True
-        if gender is 'F' and age >= 18:
+        if gender == 'F' and age >= 18:
             return True
         else:
             return False

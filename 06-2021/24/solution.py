@@ -9,14 +9,13 @@ from utils.my_db_config import My_SQL
 from utils.data_validation import Validate
 
 def request_time():
+    """Gives current time"""
     current_time = datetime.datetime.now()
     return current_time
 
 class SqlConnector:
     """
     This class is used to open the database and connect the database
-    Attribute :
-        conn : connection
     """
 
     def __init__(self):
@@ -43,6 +42,7 @@ class SqlConnector:
         self.args = self.__parser.get_args()
 
     def get_values(self):
+        """"Gives all the fields collected from command line"""
         args = self.args
         values = []
         values.extend([
@@ -61,23 +61,25 @@ class SqlConnector:
         ])
         return values
 
-    def get_args_list(self):
-        return self.args
 
     def is_user_repeated(self):
+        """Method to check if user transactions are repeated"""
         required_query = f"""
         select REQUEST_TIME from request_info where PAN = '{self.args.PAN}' ORDER BY REQUEST_TIME;
         """
-        my_sql = My_SQL()
-        my_sql.connect_db('adf_user')
-        count = my_sql.get_row_count('request_info')
-        print(count[0])
-        if count[0] > 0:
+        sql = My_SQL()
+        sql.connect_db('adf_user')
+        row_count = sql.get_row_count('request_info')
+        print(row_count[0])
+        if row_count[0] > 0:
             cursor = my_sql.get_cursor()
             cursor.execute(required_query)
             today = datetime.date.today()
             try:
-                day = int(str(*cursor.fetchall()[-1]).split(' ')[0].split('-')[2])
+                records = cursor.fetchall()
+                if len(records) == 0:
+                    return True
+                day = int(str(*records[-1]).split(' ')[0].split('-')[2])
                 assert (today.day - day ) > 5
                 return True
             except AssertionError as err:
@@ -87,6 +89,7 @@ class SqlConnector:
             return True
 
     def validate(self):
+        """Method to validate the data to be stored"""
         validation = Validate()
 
         def check_date_format():
@@ -117,7 +120,8 @@ class SqlConnector:
                 logging.warning('No last transactions for last 5 days')
                 return True
             except AssertionError as err:
-                logging.warning('There should not be any last 5 day transactions from the same user')
+                message = 'There should not be any last 5 day transactions from the same user'
+                logging.warning(message)
                 print(err)
                 return 'There should not be any last 5 day transactions from the same user'
 
@@ -203,7 +207,6 @@ if __name__ == '__main__':
 
     DB_PARAMS = "ID int PRIMARY KEY AUTO_INCREMENT,FIRST_NAME CHAR(20) NOT NULL,MIDDLE_NAME CHAR(20),LAST_NAME CHAR(20),DOB DATE,GENDER CHAR(1),NATIONALITY CHAR(20),CURRENT_CITY CHAR(30),STATE CHAR(20),PIN_CODE TEXT,QUALIFICATION TEXT,SALARY INT,PAN TEXT, REQUEST_TIME TEXT"
     REQUEST_INFO_TABLE_FIELDS = "FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, GENDER, NATIONALITY, CURRENT_CITY, STATE, PIN_CODE, QUALIFICATION, SALARY, PAN, REQUEST_TIME"
-    
     DB_PARAMS1 = f"ID int PRIMARY KEY AUTO_INCREMENT, REQUEST_ID INT, RESPONSE_STATUS TEXT NOT NULL, REASON TEXT, RESPONSE_TIME TEXT, FOREIGN KEY(REQUEST_ID) REFERENCES {REQUEST_TABLE_NAME}(ID)"
     RESPONSE_INFO_TABLE_FIELDS = 'REQUEST_ID, RESPONSE_STATUS, REASON, RESPONSE_TIME'
 
@@ -223,7 +226,8 @@ if __name__ == '__main__':
         my_sql.insert_into_table(
             REQUEST_TABLE_NAME, REQUEST_INFO_TABLE_FIELDS, REQUEST_TABLE_VALUES)
         RECORDS = my_sql.get_recent_transactions(REQUEST_TABLE_NAME, 'ID', 1, 'ID')
-        RESPONSE_TABLE_VALUES = f"{RECORDS[0][0]}, 'Success', '','{request_time()}'"
+        REQUEST_TIME = my_sql.get_recent_transactions(REQUEST_TABLE_NAME, 'REQUEST_TIME', 1, 'REQUEST_TIME')
+        RESPONSE_TABLE_VALUES = f"{RECORDS[0][0]}, 'Success', '','{REQUEST_TIME[0][0]}'"
         my_sql.insert_into_table(
             RESPONSE_TABLE_NAME, RESPONSE_INFO_TABLE_FIELDS, RESPONSE_TABLE_VALUES)
     else:
@@ -256,7 +260,6 @@ if __name__ == '__main__':
     JSON_RESPONSE = json.dumps(JSON_DICT, indent=4, sort_keys=True)
 
     print('\n\n JSON Response')
-
     print(f'\n\n {JSON_RESPONSE}')
 
     my_sql.disconnect()
