@@ -170,7 +170,6 @@ class TestTable(TestCase):
                 'pan': '234567890',
             }
         )
-
         self.assertFalse(form.is_valid())
 
     def test_first_page_get(self):
@@ -179,9 +178,9 @@ class TestTable(TestCase):
         self.assertTemplateUsed('templates/index.html')
 
     def test_first_page_post(self):
-
         post_url = reverse('responses')
-        data = {
+        form = Request_info_forms(
+            data = {
             'first_name': 'Naveen',
             'middle_name': 'R',
             'last_name': 'M',
@@ -195,9 +194,12 @@ class TestTable(TestCase):
             'salary': 18000,
             'pan': '23456789',
             }
-        response = self.client.post(post_url,data)
+        
+        )
+        response = self.client.post(post_url,form.data)
 
-        print(f'\n\n response : {response}')
+        # print(f'\n\n response : {response}')
 
         print(f'\n\n status_code : {response.status_code}\n\n')
         self.assertEqual(response.status_code, 200)
+        

@@ -16,18 +16,18 @@ class FirstPage(generic.View):
 
     def post(self, request):
         form = Request_info_forms(request.POST)
-        print('forms...')
+        # print('forms...')
         params = {
             'form': form.as_p(),
         }
         if form.is_valid():
-            print('\n\nValidator : Form saved\n\n')
+            # print('\n\nValidator : Form saved\n\n')
             form.save()
             fields = form.cleaned_data
-            print(f'\n\nForm fields : {fields}\n\n')
+            # print(f'\n\nForm fields : {fields}\n\n')
             request_form = RequestInfo.objects.filter(
                 pan=fields['pan']).order_by('request_time').reverse()[0]
-            print(f"\n\n i : {request_form.request_time} ")
+            # print(f"\n\n i : {request_form.request_time} ")
 
             get_request_id = RequestInfo.objects.get(id=request_form.id)
 
@@ -58,4 +58,4 @@ class FirstPage(generic.View):
             return JsonResponse(response_data,safe=True,content_type='application/json')
 
             # return render(request, "templates/response_list.html", context=params)
-        return render(request, "templates/index.html", context=params)
+        return render(request, "templates/index.html", context=params) #pragma: no cover
