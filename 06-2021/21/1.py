@@ -17,7 +17,7 @@ class Solution:
                 except AssertionError:
                     print('File does not contains any words')
         except FileNotFoundError as e:
-            print(e.message)
+            print(e)
 
     def findPrefix(self):
         print('\n Words starting with \'to\'')

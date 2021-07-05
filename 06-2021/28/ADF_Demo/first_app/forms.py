@@ -10,7 +10,7 @@ class Request_info_forms(forms.ModelForm):
         widgets = {
             'dob': forms.SelectDateWidget(years=years)
         }
-    
+        
     def clean(self):
         validator = super().clean()
 
