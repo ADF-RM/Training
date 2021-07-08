@@ -1,0 +1,11 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Program Files (x86)\\MySQL\\Connector J 8.0\\mysql-connector-java-8.0.25.jar",
+        "c:\\Program Files\\Jedis\\jedis-3.6.1.jar",
+        "c:\\Program Files\\Jedis\\commons-pool2-2.10.0.jar",
+        "c:\\Program Files\\Jedis\\slf4j-api-1.7.31.jar"
+    ],
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.configuration.updateBuildConfiguration": "disabled"
+}
