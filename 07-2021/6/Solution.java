@@ -1,52 +1,15 @@
-class ThreadImplementation extends Thread {
-    public void run() {
-        Thread.currentThread().setPriority(10);
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Thead 1 : \n{\nPriority : " + 
-            Thread.currentThread().getPriority() + 
-            "\nName : " + 
-            Thread.currentThread().getName() +
-            "\nAlive : " +
-            Thread.currentThread().isAlive() +
-            "\n}\n"
-            );
-            try {
-                Thread.sleep(500);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        }
-    }
-}
-
-class ThreadImplementation2 implements Runnable {
-    public void run() {
-        Thread.currentThread().setPriority(1);
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Thead 2 : \n{\nPriority : " + 
-            Thread.currentThread().getPriority() + 
-            "\nName : " + 
-            Thread.currentThread().getName() +
-            "\nAlive : " +
-            Thread.currentThread().isAlive() +
-            "\n}\n"
-            );
-            try {
-                Thread.sleep(500);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        }
-    }
-}
+import java.util.concurrent.*;
+import multithreading.*;
 
 class Solution {
     int count = 0;
-    public synchronized void increment(){
+
+    public synchronized void increment() {
         System.out.println("Count : " + ++count + "\n");
     }
-    public static void main(String[] args) {
-        ThreadImplementation t1 = new ThreadImplementation();
+
+    public static void main(String[] args) throws InterruptedException {
+        ThreadImplementation1 t1 = new ThreadImplementation1();
         ThreadImplementation2 t = new ThreadImplementation2();
 
         Thread t2 = new Thread(t);
@@ -73,24 +36,58 @@ class Solution {
         System.out.println("-------------------------------------------");
 
         Solution s = new Solution();
-        Thread thread1 = new Thread(
-            new Runnable() {
-                public void run(){
-                    for ( int i = 0; i < 10; i++ )
+        Thread thread1 = new Thread(new Runnable() {
+            public void run() {
+                for (int i = 0; i < 10; i++)
                     s.increment();
-                }
             }
-        );
-        Thread thread2 = new Thread(
-            new Runnable() {
-                public void run(){
-                    for ( int i = 0; i < 10; i++ )
+        });
+        Thread thread2 = new Thread(new Runnable() {
+            public void run() {
+                for (int i = 0; i < 10; i++)
                     s.increment();
-                }
             }
-        );
+        });
 
         thread1.start();
         thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("-------------------------------------------");
+
+        ExecutorService service = Executors.newSingleThreadExecutor();
+        service.execute(new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                System.out.println("i1 : " + i);
+            }
+        }));
+        // ----------------------------------------------
+        service.execute(new Thread(() -> {
+            for (int i = 10; i < 20; i++)
+                System.out.println("i2 : " + i);
+        }));
+        service.shutdown();
+        service.awaitTermination(1000, TimeUnit.MILLISECONDS);
+
+        while(!service.isTerminated()){}
+
+        System.out.println("-------------------------------------------");
+
+        ExecutorService pool = Executors.newFixedThreadPool(3);
+        for (int i = 20; i < 30; i++) {
+            Runnable obj = new GetCount(i);
+            pool.execute(obj);
+        }
+        pool.shutdown();
+
+        while(!service.isTerminated()){}
+
+        System.out.println("-------------------------------------------");
     }
 }
