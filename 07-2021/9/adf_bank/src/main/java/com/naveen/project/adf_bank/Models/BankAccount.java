@@ -9,10 +9,13 @@ import java.util.List;
 import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -21,19 +24,20 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 public class BankAccount {
     @Id
-    @GenericGenerator(name = "acc_no", strategy = "com.naveen.project.AccountNumberGenerator")
+    @GenericGenerator(name = "acc_no", strategy = "com.naveen.project.adf_bank.Utils.AddOns.AccountNumberGenerator")
     @GeneratedValue(generator = "acc_no")
     private Long accountNo;
     private String holderName;
     private LocalDate dateOfBirth;
     private String accountType;
-    private Double initialDeposit = 0.0;
     private Double balance = 0.0;
     private Double transactionFee = 0.0;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+    @JsonManagedReference
     @OneToMany(mappedBy = "bankAccount")
     private List<Transactions> transactions = new ArrayList<>();
 
@@ -73,12 +77,6 @@ public class BankAccount {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-    public Double getInitialDeposit() {
-        return initialDeposit;
-    }
-    public void setInitialDeposit(Double initialDeposit) {
-        this.initialDeposit = initialDeposit;
-    }
     public Double getBalance() {
         return balance;
     }
@@ -102,7 +100,7 @@ public class BankAccount {
     public String toString() {
         return "BankAccount [accountNo=" + accountNo + ", accountType=" + accountType + ", balance=" + balance
                 + ", createdAt=" + createdAt + ", dateOfBirth=" + dateOfBirth + ", holderName=" + holderName
-                + ", initialDeposit=" + initialDeposit + ", transactionFee=" + transactionFee + ", updatedAt="
+                + ", transactionFee=" + transactionFee + ", updatedAt="
                 + updatedAt + "]";
     }
 }

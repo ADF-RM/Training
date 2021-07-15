@@ -4,8 +4,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,12 +18,17 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 public class Transactions {
     @Id
+    @GeneratedValue
     private Integer transactionId;
+    @JsonBackReference
     @ManyToOne
+    @JoinColumn(name="accountNo")
     private BankAccount bankAccount;
-    private Long accountNo;
     private Double transactionAmount;
-    private String transactionType;
+    private String transactionType = "DEPOSIT";
+    private Double oldBalance = 0.0;
+    private Double newBalance = 0.0;
+    @CreationTimestamp
     private LocalDate transactionDate;
     private String transactionStatus;
     @CreationTimestamp
@@ -31,12 +41,6 @@ public class Transactions {
     }
     public void setTransactionId(Integer transactionId) {
         this.transactionId = transactionId;
-    }
-    public Long getAccountNo() {
-        return accountNo;
-    }
-    public void setAccountNo(Long accountNo) {
-        this.accountNo = accountNo;
     }
     public Double getTransactionAmount() {
         return transactionAmount;
@@ -80,11 +84,24 @@ public class Transactions {
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
     }
+    public Double getOldBalance() {
+        return oldBalance;
+    }
+    public void setOldBalance(Double oldBalance) {
+        this.oldBalance = oldBalance;
+    }
+    public Double getNewBalance() {
+        return newBalance;
+    }
+    public void setNewBalance(Double newBalance) {
+        this.newBalance = newBalance;
+    }
+    
     @Override
     public String toString() {
-        return "Transactions [accountNo=" + accountNo + ", createdAt=" + createdAt + ", transactionAmount="
-                + transactionAmount + ", transactionDate=" + transactionDate + ", transactionId=" + transactionId
-                + ", transactionStatus=" + transactionStatus + ", transactionType=" + transactionType + ", updatedAt="
-                + updatedAt + "]";
+        return "Transactions [bankAccount=" + bankAccount + ", createdAt=" + createdAt + ", newBalance=" + newBalance
+                + ", oldBalance=" + oldBalance + ", transactionAmount=" + transactionAmount + ", transactionDate="
+                + transactionDate + ", transactionId=" + transactionId + ", transactionStatus=" + transactionStatus
+                + ", transactionType=" + transactionType + ", updatedAt=" + updatedAt + "]";
     }   
 }
