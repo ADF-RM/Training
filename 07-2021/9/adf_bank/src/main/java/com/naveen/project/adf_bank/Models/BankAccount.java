@@ -1,17 +1,12 @@
-package com.naveen.project.adf_bank.Models;
+package com.naveen.project.adf_bank.models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.annotation.Generated;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -24,7 +19,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 public class BankAccount {
     @Id
-    @GenericGenerator(name = "acc_no", strategy = "com.naveen.project.adf_bank.Utils.AddOns.AccountNumberGenerator")
+    @GenericGenerator(name = "acc_no", strategy = "com.naveen.project.adf_bank.helpers.add_ons.AccountNumberGenerator")
     @GeneratedValue(generator = "acc_no")
     private Long accountNo;
     private String holderName;

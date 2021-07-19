@@ -1,0 +1,61 @@
+[2021-07-16 18:54:57.543] - 18772 INFO [main] --- com.naveen.project.adf_bank.controllers.BankAccountController: Sucess Initializing Log...
+[2021-07-16 18:55:13.571] - 18772 INFO [http-nio-8080-exec-1] --- com.naveen.project.adf_bank.controllers.BankAccountController: Account Creation Successful..
+[2021-07-16 18:55:13.572] - 18772 INFO [http-nio-8080-exec-1] --- com.naveen.project.adf_bank.controllers.BankAccountController: Returning the accounts created
+[2021-07-16 19:02:13.336] - 18772 INFO [http-nio-8080-exec-2] --- com.naveen.project.adf_bank.controllers.BankAccountController: Transaction Successful..
+[2021-07-16 19:02:13.337] - 18772 INFO [http-nio-8080-exec-2] --- com.naveen.project.adf_bank.controllers.BankAccountController: Returning Transactions done by 1000000000000
+[2021-07-16 19:02:21.145] - 18772 INFO [http-nio-8080-exec-3] --- com.naveen.project.adf_bank.controllers.BankAccountController: Fetching account statement of 1000000000000
+[2021-07-16 19:02:51.636] - 18772 WARNING [http-nio-8080-exec-4] --- com.naveen.project.adf_bank.controllers.BankAccountController: Age should be less than 100 years
+[2021-07-16 19:03:04.848] - 18772 INFO [http-nio-8080-exec-5] --- com.naveen.project.adf_bank.controllers.BankAccountController: Account Creation Successful..
+[2021-07-16 19:03:04.849] - 18772 INFO [http-nio-8080-exec-5] --- com.naveen.project.adf_bank.controllers.BankAccountController: Returning the accounts created
+2021-07-16 19:03:04 - Returning the accounts created
+2021-07-16 20:56:48 - Starting AdfBankApplicationTests using Java 16.0.1 on Naveen with PID 15820 (started by HP in C:\Users\HP\ADF\Training\07-2021\9\adf_bank)
+2021-07-16 20:56:48 - No active profile set, falling back to default profiles: default
+2021-07-16 20:56:50 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-16 20:56:50 - Finished Spring Data repository scanning in 115 ms. Found 2 JPA repository interfaces.
+2021-07-16 20:56:51 - HikariPool-1 - Starting...
+2021-07-16 20:56:52 - HikariPool-1 - Start completed.
+2021-07-16 20:56:52 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-16 20:56:52 - HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-16 20:56:53 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-16 20:56:53 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-07-16 20:56:54 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-16 20:56:54 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-16 20:56:55 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-16 20:56:56 - Started AdfBankApplicationTests in 8.341 seconds (JVM running for 10.172)
+2021-07-16 20:56:57 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-07-16 20:56:57 - HikariPool-1 - Shutdown initiated...
+2021-07-16 20:56:57 - HikariPool-1 - Shutdown completed.
+2021-07-16 20:57:35 - Starting AdfBankApplicationTests using Java 16.0.1 on Naveen with PID 23328 (started by HP in C:\Users\HP\ADF\Training\07-2021\9\adf_bank)
+2021-07-16 20:57:35 - No active profile set, falling back to default profiles: default
+2021-07-16 20:57:36 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-16 20:57:36 - Finished Spring Data repository scanning in 90 ms. Found 2 JPA repository interfaces.
+2021-07-16 20:57:37 - HikariPool-1 - Starting...
+2021-07-16 20:57:38 - HikariPool-1 - Start completed.
+2021-07-16 20:57:38 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-16 20:57:38 - HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-16 20:57:38 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-16 20:57:39 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-07-16 20:57:40 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-16 20:57:40 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-16 20:57:41 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-16 20:57:42 - Started AdfBankApplicationTests in 8.151 seconds (JVM running for 9.536)
+2021-07-16 20:57:43 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-07-16 20:57:43 - HikariPool-1 - Shutdown initiated...
+2021-07-16 20:57:43 - HikariPool-1 - Shutdown completed.
+2021-07-16 21:00:31 - Starting AdfBankApplicationTests using Java 16.0.1 on Naveen with PID 18232 (started by HP in C:\Users\HP\ADF\Training\07-2021\9\adf_bank)
+2021-07-16 21:00:32 - No active profile set, falling back to default profiles: default
+2021-07-16 21:00:33 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-16 21:00:33 - Finished Spring Data repository scanning in 127 ms. Found 2 JPA repository interfaces.
+2021-07-16 21:00:34 - HikariPool-1 - Starting...
+2021-07-16 21:00:35 - HikariPool-1 - Start completed.
+2021-07-16 21:00:35 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-16 21:00:35 - HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-16 21:00:35 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-16 21:00:36 - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-07-16 21:00:37 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-16 21:00:37 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-16 21:00:38 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-16 21:00:39 - Started AdfBankApplicationTests in 8.263 seconds (JVM running for 9.777)
+2021-07-16 21:00:40 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-07-16 21:00:40 - HikariPool-1 - Shutdown initiated...
+2021-07-16 21:00:40 - HikariPool-1 - Shutdown completed.

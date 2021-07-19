@@ -1,4 +1,4 @@
-package com.naveen.project.adf_bank.Utils.AddOns;
+package com.naveen.project.adf_bank.helpers.add_ons;
 
 import java.io.Serializable;
 
@@ -10,8 +10,8 @@ public class AccountNumberGenerator implements IdentifierGenerator {
 
     @Override
     public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-        AccountNumberInitializer.getInstance();
-        System.out.println("\n" + AccountNumberInitializer.accountNumber+"\n");
-        return AccountNumberInitializer.accountNumber;
+        AccountNumberInitializerHelper.getInstance();
+        System.out.println("\n" + AccountNumberInitializerHelper.accountNumber+"\n");
+        return AccountNumberInitializerHelper.accountNumber;
     }
 }

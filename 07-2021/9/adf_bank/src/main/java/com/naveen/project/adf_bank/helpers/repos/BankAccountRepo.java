@@ -1,6 +1,6 @@
-package com.naveen.project.adf_bank.Utils.Repos;
+package com.naveen.project.adf_bank.helpers.repos;
 
-import com.naveen.project.adf_bank.Models.BankAccount;
+import com.naveen.project.adf_bank.models.BankAccount;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

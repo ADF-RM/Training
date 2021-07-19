@@ -1,10 +1,9 @@
-package com.naveen.project.adf_bank.Models;
+package com.naveen.project.adf_bank.models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
